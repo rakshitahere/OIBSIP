@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - Celsius, Fahrenheit & Kelvin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="converter-card">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="title">Temperature Converter</h1>
+                <p class="subtitle">Convert between Celsius, Fahrenheit, and Kelvin</p>
+            </div>
+
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="temperatureInput" class="label">Enter Temperature Value</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="number" 
+                            id="temperatureInput" 
+                            class="input-field" 
+                            placeholder="e.g., 25"
+                            step="0.01"
+                        >
+                        <span class="input-icon">°</span>
+                    </div>
+                    <span class="error-message" id="errorMessage"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputUnit" class="label">From Unit</label>
+                    <div class="unit-selector">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input 
+                                    type="radio" 
+                                    id="celsiusInput" 
+                                    name="inputUnit" 
+                                    value="celsius" 
+                                    checked
+                                    class="radio-input"
+                                >
+                                <label for="celsiusInput" class="radio-label">Celsius (°C)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input 
+                                    type="radio" 
+                                    id="fahrenheitInput" 
+                                    name="inputUnit" 
+                                    value="fahrenheit"
+                                    class="radio-input"
+                                >
+                                <label for="fahrenheitInput" class="radio-label">Fahrenheit (°F)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input 
+                                    type="radio" 
+                                    id="kelvinInput" 
+                                    name="inputUnit" 
+                                    value="kelvin"
+                                    class="radio-input"
+                                >
+                                <label for="kelvinInput" class="radio-label">Kelvin (K)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Convert Button -->
+            <button id="convertBtn" class="convert-btn">Convert</button>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2 class="results-title">Conversion Results</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon celsius-icon">°C</div>
+                        <div class="result-content">
+                            <p class="result-label">Celsius</p>
+                            <p class="result-value" id="celsiusResult">0.00</p>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-icon fahrenheit-icon">°F</div>
+                        <div class="result-content">
+                            <p class="result-label">Fahrenheit</p>
+                            <p class="result-value" id="fahrenheitResult">32.00</p>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-icon kelvin-icon">K</div>
+                        <div class="result-content">
+                            <p class="result-label">Kelvin</p>
+                            <p class="result-value" id="kelvinResult">273.15</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box" id="infoBox"></div>
+            </div>
+
+            <!-- Error Message Display -->
+            <div class="error-alert" id="errorAlert" style="display: none;">
+                <span class="alert-icon">⚠</span>
+                <span class="alert-text" id="alertText"></span>
+            </div>
+
+            <!-- Reset Button -->
+            <button id="resetBtn" class="reset-btn" style="display: none;">Reset</button>
+
+            <!-- Reference Guide -->
+            <div class="reference-guide">
+                <h3 class="guide-title">Quick Reference</h3>
+                <div class="guide-items">
+                    <div class="guide-item">
+                        <span class="guide-label">Water Freezes:</span>
+                        <span class="guide-value">0°C = 32°F = 273.15K</span>
+                    </div>
+                    <div class="guide-item">
+                        <span class="guide-label">Room Temperature:</span>
+                        <span class="guide-value">20°C = 68°F = 293.15K</span>
+                    </div>
+                    <div class="guide-item">
+                        <span class="guide-label">Water Boils:</span>
+                        <span class="guide-value">100°C = 212°F = 373.15K</span>
+                    </div>
+                    <div class="guide-item">
+                        <span class="guide-label">Absolute Zero:</span>
+                        <span class="guide-value">-273.15°C = -459.67°F = 0K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
