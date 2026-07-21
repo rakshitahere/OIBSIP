@@ -1,8 +1,6 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Internship Projects</title>
 </head>
 <body>
   <h1>My Internship Projects</h1>
