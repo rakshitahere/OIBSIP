@@ -1,11 +1,5 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-  <h1>My Internship Projects</h1>
-  <ul>
-    <li><a href="./https://rakshitahere.github.io/OIBSIP">Internship Task Links</a></li>
-  </ul>
-</body>
-</html>
+# My Internship Projects
+
+* [Task 1: Landing Page](https://rakshitahere.github.io/OIBSIP/WebDev-Task1-LandingPage/)
+* [Task 2: Portfolio](https://rakshitahere.github.io/OIBSIP/WebDev-Task2-PersonalPortpolio/)
+* [Task 3: Temperature Converter](https://rakshitahere.github.io/OIBSIP/WebDev-Task3-TempretureConverter/)
