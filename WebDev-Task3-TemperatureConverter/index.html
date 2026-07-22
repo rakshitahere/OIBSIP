@@ -1,145 +1,168 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Converter - Celsius, Fahrenheit & Kelvin</title>
+    <title>Global Temperature Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="converter-card">
-            <!-- Header -->
-            <div class="header">
-                <h1 class="title">Temperature Converter</h1>
-                <p class="subtitle">Convert between Celsius, Fahrenheit, and Kelvin</p>
-            </div>
+    <div class="page-shell">
+        <div class="page-background"></div>
 
-            <!-- Input Section -->
-            <div class="input-section">
-                <div class="form-group">
-                    <label for="temperatureInput" class="label">Enter Temperature Value</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="number" 
-                            id="temperatureInput" 
-                            class="input-field" 
-                            placeholder="e.g., 25"
-                            step="0.01"
-                        >
-                        <span class="input-icon">°</span>
-                    </div>
-                    <span class="error-message" id="errorMessage"></span>
+        <main class="layout-shell">
+            <section class="hero-card">
+                <div class="hero-copy">
+                    <h1>Temperature Converter</h1>
+                    <p>Convert between Celsius, Fahrenheit, and Kelvin in a modern interface.</p>
                 </div>
+                <div class="hero-thermometer" aria-hidden="true">
+                    <div class="thermometer-mercury"></div>
+                </div>
+            </section>
 
-                <div class="form-group">
-                    <label for="inputUnit" class="label">From Unit</label>
-                    <div class="unit-selector">
-                        <div class="radio-group">
-                            <div class="radio-item">
-                                <input 
-                                    type="radio" 
-                                    id="celsiusInput" 
-                                    name="inputUnit" 
-                                    value="celsius" 
-                                    checked
-                                    class="radio-input"
+            <div class="grid-panel">
+                <section class="converter-card">
+                    <div class="card-top">
+                        <div>
+                            <p class="card-label">Converter</p>
+                            <h2>Temperature Converter</h2>
+                        </div>
+                    </div>
+
+                    <div class="card-copy">
+                        <p>Enter a value, choose your units, and convert instantly.</p>
+                    </div>
+
+                    <div class="input-section">
+                        <div class="form-group value-group">
+                            <label for="temperatureInput">Enter Value</label>
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="temperatureInput"
+                                    class="input-field"
+                                    placeholder="e.g., 100"
+                                    step="0.01"
                                 >
-                                <label for="celsiusInput" class="radio-label">Celsius (°C)</label>
+                                <span class="input-icon">°</span>
                             </div>
-                            <div class="radio-item">
-                                <input 
-                                    type="radio" 
-                                    id="fahrenheitInput" 
-                                    name="inputUnit" 
-                                    value="fahrenheit"
-                                    class="radio-input"
-                                >
-                                <label for="fahrenheitInput" class="radio-label">Fahrenheit (°F)</label>
+                            <span class="error-message" id="errorMessage"></span>
+                        </div>
+
+                        <div class="select-row">
+                            <div class="select-group">
+                                <label for="fromUnit">From</label>
+                                <select id="fromUnit" class="unit-select">
+                                    <option value="celsius">Celsius (°C)</option>
+                                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                                    <option value="kelvin">Kelvin (K)</option>
+                                </select>
                             </div>
-                            <div class="radio-item">
-                                <input 
-                                    type="radio" 
-                                    id="kelvinInput" 
-                                    name="inputUnit" 
-                                    value="kelvin"
-                                    class="radio-input"
-                                >
-                                <label for="kelvinInput" class="radio-label">Kelvin (K)</label>
+
+                            <button id="swapBtn" class="swap-btn" type="button">⟷ Swap Units</button>
+
+                            <div class="select-group">
+                                <label for="toUnit">To</label>
+                                <select id="toUnit" class="unit-select">
+                                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                                    <option value="celsius">Celsius (°C)</option>
+                                    <option value="kelvin">Kelvin (K)</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
+
+                    <button id="convertBtn" class="convert-btn">Convert Now</button>
+
+                    <div class="results-section" id="resultsSection" style="display: none;">
+                        <h3 class="results-title">Conversion Results</h3>
+
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <div class="result-icon celsius-icon">°C</div>
+                                <div>
+                                    <p class="result-label">Celsius</p>
+                                    <p class="result-value" id="celsiusResult">0.00</p>
+                                </div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon fahrenheit-icon">°F</div>
+                                <div>
+                                    <p class="result-label">Fahrenheit</p>
+                                    <p class="result-value" id="fahrenheitResult">32.00</p>
+                                </div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-icon kelvin-icon">K</div>
+                                <div>
+                                    <p class="result-label">Kelvin</p>
+                                    <p class="result-value" id="kelvinResult">273.15</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box" id="infoBox"></div>
+                    </div>
+
+                    <div class="error-alert" id="errorAlert" style="display: none;">
+                        <span class="alert-icon">⚠</span>
+                        <span class="alert-text" id="alertText"></span>
+                    </div>
+
+                    <button id="resetBtn" class="reset-btn" style="display: none;">Reset</button>
+                </section>
+
+                <aside class="side-panel">
+                    <div class="panel-card quick-card">
+                        <div class="panel-header">
+                            <h3>Quick Conversions</h3>
+                            <span class="pill">Ready</span>
+                        </div>
+                        <ul class="quick-list">
+                            <li><strong>0°C</strong> = 32°F</li>
+                            <li><strong>25°C</strong> = 77°F</li>
+                            <li><strong>100°C</strong> = 212°F</li>
+                            <li><strong>212°F</strong> = 100°C</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-card history-card">
+                        <div class="panel-header">
+                            <h3>Recently Converted</h3>
+                        </div>
+                        <ul id="recentlyConvertedList" class="history-list">
+                            <li>No conversions yet. Try one now.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="bottom-widgets">
+                <div class="widget-card">
+                    <p class="widget-label">Kelvin</p>
+                    <p class="widget-value">273.15 K</p>
+                </div>
+                <div class="widget-card">
+                    <p class="widget-label">Rankine</p>
+                    <p class="widget-value">491.67 °R</p>
+                </div>
+                <div class="widget-card weather-widget">
+                    <span class="weather-icon">☀️</span>
+                    <div>
+                        <p class="widget-label">Sun High Heat</p>
+                        <p class="widget-value">100°C → 212°F</p>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <!-- Convert Button -->
-            <button id="convertBtn" class="convert-btn">Convert</button>
-
-            <!-- Results Section -->
-            <div class="results-section" id="resultsSection" style="display: none;">
-                <h2 class="results-title">Conversion Results</h2>
-                
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-icon celsius-icon">°C</div>
-                        <div class="result-content">
-                            <p class="result-label">Celsius</p>
-                            <p class="result-value" id="celsiusResult">0.00</p>
-                        </div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-icon fahrenheit-icon">°F</div>
-                        <div class="result-content">
-                            <p class="result-label">Fahrenheit</p>
-                            <p class="result-value" id="fahrenheitResult">32.00</p>
-                        </div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-icon kelvin-icon">K</div>
-                        <div class="result-content">
-                            <p class="result-label">Kelvin</p>
-                            <p class="result-value" id="kelvinResult">273.15</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box" id="infoBox"></div>
-            </div>
-
-            <!-- Error Message Display -->
-            <div class="error-alert" id="errorAlert" style="display: none;">
-                <span class="alert-icon">⚠</span>
-                <span class="alert-text" id="alertText"></span>
-            </div>
-
-            <!-- Reset Button -->
-            <button id="resetBtn" class="reset-btn" style="display: none;">Reset</button>
-
-            <!-- Reference Guide -->
-            <div class="reference-guide">
-                <h3 class="guide-title">Quick Reference</h3>
-                <div class="guide-items">
-                    <div class="guide-item">
-                        <span class="guide-label">Water Freezes:</span>
-                        <span class="guide-value">0°C = 32°F = 273.15K</span>
-                    </div>
-                    <div class="guide-item">
-                        <span class="guide-label">Room Temperature:</span>
-                        <span class="guide-value">20°C = 68°F = 293.15K</span>
-                    </div>
-                    <div class="guide-item">
-                        <span class="guide-label">Water Boils:</span>
-                        <span class="guide-value">100°C = 212°F = 373.15K</span>
-                    </div>
-                    <div class="guide-item">
-                        <span class="guide-label">Absolute Zero:</span>
-                        <span class="guide-value">-273.15°C = -459.67°F = 0K</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <footer class="page-footer">
+            <p>&copy; 2026 Open Sans. Simple, polished temperature conversion for modern dashboards.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>

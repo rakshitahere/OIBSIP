@@ -1,37 +1,49 @@
-/* ============================================
+﻿/* ============================================
    TEMPERATURE CONVERTER - JAVASCRIPT
    ============================================ */
 
 // DOM Elements
 const temperatureInput = document.getElementById('temperatureInput');
-const inputUnitRadios = document.querySelectorAll('input[name="inputUnit"]');
+const fromUnitSelect = document.getElementById('fromUnit');
+const toUnitSelect = document.getElementById('toUnit');
+const swapBtn = document.getElementById('swapBtn');
 const convertBtn = document.getElementById('convertBtn');
 const resetBtn = document.getElementById('resetBtn');
 const resultsSection = document.getElementById('resultsSection');
 const errorAlert = document.getElementById('errorAlert');
 const alertText = document.getElementById('alertText');
 const errorMessage = document.getElementById('errorMessage');
+const recentlyConvertedList = document.getElementById('recentlyConvertedList');
 
 const celsiusResult = document.getElementById('celsiusResult');
 const fahrenheitResult = document.getElementById('fahrenheitResult');
 const kelvinResult = document.getElementById('kelvinResult');
 const infoBox = document.getElementById('infoBox');
+const pageShell = document.querySelector('.page-shell');
 
-// Constants
+const recentHistory = [];
+
 const ABSOLUTE_ZERO_CELSIUS = -273.15;
 const ABSOLUTE_ZERO_FAHRENHEIT = -459.67;
 const ABSOLUTE_ZERO_KELVIN = 0;
 
-// ============================================
-// CONVERSION FUNCTIONS
-// ============================================
+function formatNumber(value) {
+    return Number(value).toFixed(2);
+}
 
-/**
- * Convert any temperature to Celsius
- * @param {number} value - Temperature value
- * @param {string} unit - Unit of input (celsius, fahrenheit, kelvin)
- * @returns {number} Temperature in Celsius
- */
+function formatUnit(unit) {
+    switch (unit) {
+        case 'celsius':
+            return '°C';
+        case 'fahrenheit':
+            return '°F';
+        case 'kelvin':
+            return 'K';
+        default:
+            return '';
+    }
+}
+
 function toCelsius(value, unit) {
     switch (unit) {
         case 'celsius':
@@ -41,132 +53,117 @@ function toCelsius(value, unit) {
         case 'kelvin':
             return value - 273.15;
         default:
-            return 0;
+            return NaN;
     }
 }
 
-/**
- * Convert Celsius to Fahrenheit
- * @param {number} celsius - Temperature in Celsius
- * @returns {number} Temperature in Fahrenheit
- */
 function celsiusToFahrenheit(celsius) {
     return (celsius * 9) / 5 + 32;
 }
 
-/**
- * Convert Celsius to Kelvin
- * @param {number} celsius - Temperature in Celsius
- * @returns {number} Temperature in Kelvin
- */
 function celsiusToKelvin(celsius) {
     return celsius + 273.15;
 }
 
-/**
- * Get the input unit from selected radio button
- * @returns {string} The selected unit
- */
-function getInputUnit() {
-    return document.querySelector('input[name="inputUnit"]:checked').value;
-}
-
-/**
- * Validate temperature input for absolute zero violations
- * @param {number} value - Temperature value
- * @param {string} unit - Unit of temperature
- * @returns {object} Validation result with isValid and message
- */
 function validateTemperature(value, unit) {
-    const result = {
-        isValid: true,
-        message: ''
-    };
-
     if (isNaN(value)) {
-        result.isValid = false;
-        result.message = 'Please enter a valid number.';
-        return result;
+        return {
+            isValid: false,
+            message: 'Please enter a valid number.'
+        };
     }
 
-    // Check for absolute zero violations
-    switch (unit) {
-        case 'celsius':
-            if (value < ABSOLUTE_ZERO_CELSIUS) {
-                result.isValid = false;
-                result.message = `Temperature cannot be below ${ABSOLUTE_ZERO_CELSIUS}°C (absolute zero).`;
-            }
-            break;
-        case 'fahrenheit':
-            if (value < ABSOLUTE_ZERO_FAHRENHEIT) {
-                result.isValid = false;
-                result.message = `Temperature cannot be below ${ABSOLUTE_ZERO_FAHRENHEIT}°F (absolute zero).`;
-            }
-            break;
-        case 'kelvin':
-            if (value < ABSOLUTE_ZERO_KELVIN) {
-                result.isValid = false;
-                result.message = `Temperature cannot be below ${ABSOLUTE_ZERO_KELVIN}K (absolute zero).`;
-            }
-            break;
+    if (unit === 'celsius' && value < ABSOLUTE_ZERO_CELSIUS) {
+        return {
+            isValid: false,
+            message: `Temperature cannot be below ${ABSOLUTE_ZERO_CELSIUS}°C (absolute zero).`
+        };
     }
 
-    return result;
+    if (unit === 'fahrenheit' && value < ABSOLUTE_ZERO_FAHRENHEIT) {
+        return {
+            isValid: false,
+            message: `Temperature cannot be below ${ABSOLUTE_ZERO_FAHRENHEIT}°F (absolute zero).`
+        };
+    }
+
+    if (unit === 'kelvin' && value < ABSOLUTE_ZERO_KELVIN) {
+        return {
+            isValid: false,
+            message: `Temperature cannot be below ${ABSOLUTE_ZERO_KELVIN}K (absolute zero).`
+        };
+    }
+
+    return { isValid: true, message: '' };
 }
 
-/**
- * Format number to 2 decimal places
- * @param {number} num - Number to format
- * @returns {string} Formatted number
- */
-function formatNumber(num) {
-    return parseFloat(num).toFixed(2);
-}
-
-/**
- * Get informational message based on temperature in Celsius
- * @param {number} celsius - Temperature in Celsius
- * @returns {string} Informational message
- */
 function getInfoMessage(celsius) {
-    if (celsius < -273.15) {
-        return 'Invalid temperature: Below absolute zero.';
-    } else if (celsius < -50) {
-        return 'Extremely cold - Danger zone for human exposure.';
-    } else if (celsius < 0) {
-        return 'Below freezing - Ice and snow conditions.';
-    } else if (celsius === 0) {
-        return 'Freezing point of water at standard pressure.';
-    } else if (celsius < 15) {
-        return 'Cold - Light jacket weather.';
-    } else if (celsius < 25) {
-        return 'Mild - Comfortable room temperature.';
-    } else if (celsius < 35) {
-        return 'Warm - Pleasant outdoor weather.';
-    } else if (celsius < 50) {
-        return 'Hot - High heat exposure warning.';
-    } else {
-        return 'Extremely hot - Danger zone for human exposure.';
+    if (celsius < -50) {
+        return 'Extremely cold — danger zone for exposure.';
     }
+    if (celsius < 0) {
+        return 'Below freezing — watch for ice and snow.';
+    }
+    if (celsius < 15) {
+        return 'Chilly — a jacket is recommended.';
+    }
+    if (celsius < 25) {
+        return 'Comfortable — nice room temperature.';
+    }
+    if (celsius < 35) {
+        return 'Warm — a summer day.';
+    }
+    return 'Hot — stay hydrated and cool.';
 }
 
-/**
- * Convert and display results
- */
-function convert() {
-    // Get input value and unit
-    const inputValue = parseFloat(temperatureInput.value);
-    const inputUnit = getInputUnit();
+function renderRecentHistory() {
+    if (recentHistory.length === 0) {
+        recentlyConvertedList.innerHTML = '<li>No conversions yet. Try one now.</li>';
+        return;
+    }
 
-    // Clear previous messages
+    recentlyConvertedList.innerHTML = recentHistory
+        .map(item => `<li>${item}</li>`)
+        .join('');
+}
+
+function addRecentConversion(entry) {
+    recentHistory.unshift(entry);
+    if (recentHistory.length > 4) {
+        recentHistory.pop();
+    }
+    renderRecentHistory();
+}
+
+function clearError() {
     errorMessage.textContent = '';
+    alertText.textContent = '';
     errorAlert.style.display = 'none';
+}
 
-    // Validate input
+function handleInputChange() {
+    const rawValue = temperatureInput.value.trim();
+    const parsedValue = parseFloat(rawValue);
+    const validation = validateTemperature(parsedValue, fromUnitSelect.value);
+
+    if (rawValue === '') {
+        errorMessage.textContent = '';
+        return;
+    }
+
+    errorMessage.textContent = validation.isValid ? '' : validation.message;
+}
+
+function convert() {
+    const rawValue = temperatureInput.value.trim();
+    const inputValue = parseFloat(rawValue);
+    const inputUnit = fromUnitSelect.value;
+    const outputUnit = toUnitSelect.value;
+
+    clearError();
+
     const validation = validateTemperature(inputValue, inputUnit);
-    
     if (!validation.isValid) {
-        // Show error alert
         alertText.textContent = validation.message;
         errorAlert.style.display = 'flex';
         resultsSection.style.display = 'none';
@@ -174,110 +171,76 @@ function convert() {
         return;
     }
 
-    // Convert to Celsius first
     const celsius = toCelsius(inputValue, inputUnit);
-
-    // Convert to all units
     const fahrenheit = celsiusToFahrenheit(celsius);
     const kelvin = celsiusToKelvin(celsius);
 
-    // Display results
+    updateTheme(celsius);
+
     celsiusResult.textContent = formatNumber(celsius);
     fahrenheitResult.textContent = formatNumber(fahrenheit);
     kelvinResult.textContent = formatNumber(kelvin);
+    infoBox.textContent = getInfoMessage(celsius);
 
-    // Display info message
-    const info = getInfoMessage(celsius);
-    infoBox.textContent = info;
+    const convertedValue =
+        outputUnit === 'celsius' ? celsius :
+        outputUnit === 'fahrenheit' ? fahrenheit :
+        kelvin;
 
-    // Show results section
+    addRecentConversion(`${formatNumber(inputValue)} ${formatUnit(inputUnit)} → ${formatNumber(convertedValue)} ${formatUnit(outputUnit)}`);
+
     resultsSection.style.display = 'block';
     resetBtn.style.display = 'block';
-    errorAlert.style.display = 'none';
 }
 
-/**
- * Reset the converter
- */
 function reset() {
     temperatureInput.value = '';
-    document.getElementById('celsiusInput').checked = true;
+    fromUnitSelect.value = 'celsius';
+    toUnitSelect.value = 'fahrenheit';
     resultsSection.style.display = 'none';
     resetBtn.style.display = 'none';
-    errorAlert.style.display = 'none';
-    errorMessage.textContent = '';
+    clearError();
+    pageShell.classList.remove('cold', 'moderate', 'hot');
     temperatureInput.focus();
 }
 
-/**
- * Handle real-time input validation
- */
-function handleInputChange() {
-    const inputValue = temperatureInput.value;
-    const inputUnit = getInputUnit();
+function updateTheme(celsius) {
+    pageShell.classList.remove('cold', 'moderate', 'hot');
 
-    if (inputValue === '') {
-        errorMessage.textContent = '';
+    if (celsius >= 25) {
+        pageShell.classList.add('hot');
         return;
     }
 
-    const validation = validateTemperature(parseFloat(inputValue), inputUnit);
-    
-    if (!validation.isValid) {
-        errorMessage.textContent = validation.message;
-    } else {
-        errorMessage.textContent = '';
+    if (celsius >= 10) {
+        pageShell.classList.add('moderate');
+        return;
     }
+
+    pageShell.classList.add('cold');
 }
 
-/**
- * Handle unit change - re-validate if needed
- */
-function handleUnitChange() {
-    handleInputChange();
-}
-
-/**
- * Handle Enter key press
- */
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
         convert();
     }
 }
 
-// ============================================
-// EVENT LISTENERS
-// ============================================
+swapBtn.addEventListener('click', () => {
+    const currentFrom = fromUnitSelect.value;
+    fromUnitSelect.value = toUnitSelect.value;
+    toUnitSelect.value = currentFrom;
+});
 
-// Convert button
 convertBtn.addEventListener('click', convert);
-
-// Reset button
 resetBtn.addEventListener('click', reset);
 
-// Input field
 temperatureInput.addEventListener('input', handleInputChange);
 temperatureInput.addEventListener('keypress', handleKeyPress);
+fromUnitSelect.addEventListener('change', handleInputChange);
+toUnitSelect.addEventListener('change', handleInputChange);
 
-// Unit selection
-inputUnitRadios.forEach(radio => {
-    radio.addEventListener('change', handleUnitChange);
-});
-
-// Focus input field on load
 window.addEventListener('load', () => {
     temperatureInput.focus();
-});
-
-// ============================================
-// UTILITY: Allow keyboard shortcuts
-// ============================================
-
-document.addEventListener('keydown', (event) => {
-    // Ctrl/Cmd + R to reset
-    if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
-        event.preventDefault();
-        reset();
-    }
+    renderRecentHistory();
 });
