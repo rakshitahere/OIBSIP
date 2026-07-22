@@ -1,270 +1,196 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakshita Baadkar - Full Stack Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Rakshita | Full Stack Web Developer & AI Enthusiast</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <a href="#home" class="brand-link">RB</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="page-wrapper">
+        <header class="topbar">
+            <div class="brand-circle">RB</div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
-    <!-- Hero/Profile Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="profile-image">
-                <div class="avatar-placeholder">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="35" r="20" fill="currentColor"/>
-                        <path d="M20 80 Q20 60 50 60 Q80 60 80 80 Z" fill="currentColor"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="hero-content">
-                <h1 class="hero-title">Rakshita Baadkar</h1>
-                <p class="hero-subtitle">Full Stack Developer & AI Enthusiast</p>
-                <p class="hero-description">
-                    Crafting beautiful, functional web experiences with modern technologies. 
-                    Passionate Artificial Intelligence enthusiast, always exploring new horizons in tech and innovation.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="social-icons-hero">
-                    <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="mailto:rakshitabaadkar1@gmail.com" class="social-icon" title="Email">
-                        <span>Email</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- About Me Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="about-content">
-                <p class="about-text">
-                   I am a passionate Full Stack Developer and AI enthusiast who enjoys building modern, user-focused web applications that solve real-world problems. I have experience working with both front-end and back-end technologies, creating responsive, functional, and visually appealing websites.
-
-My interests include HTML, CSS, JavaScript, Python, Flask, PHP, MySQL, and MongoDB, and I am continuously expanding my knowledge by exploring new frameworks, tools, and best practices in software development. Alongside web development, I am fascinated by Artificial Intelligence and enjoy learning how AI can be integrated into applications to create smarter, more personalized user experiences.
-
-I believe in continuous learning, problem-solving, and turning ideas into meaningful digital products. I enjoy working on innovative projects, improving my technical skills, and staying up to date with the latest trends in technology. My goal is to build impactful software, contribute to exciting development teams, and grow as a developer while creating solutions that make a difference.
-                </p>
-                <p class="about-text">
-                   
-                <p class="about-text">
-                   </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Frontend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Responsive Design</span>
+        <main>
+            <section id="home" class="hero-section">
+                <div class="hero-copy">
+                    <span class="hero-label">Hello, I'm Rakshita</span>
+                    <h1>Full Stack Developer & AI Enthusiast</h1>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-primary">View Projects</a>
+                        <a href="Rakshita_Baadkar_Resume.docx" class="btn-secondary" download>Download Resume</a>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Backend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">REST APIs</span>
-                    </div>
+                <div class="hero-visual">
+                    <img src="img.png" alt="Rakshita Baadkar portrait" class="hero-photo">
                 </div>
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Tools & Others</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Webpack</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Projects</h2>
-                <div class="title-underline"></div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder placeholder-1">
-                            <span>Project 1</span>
+            <section id="about" class="section about-section">
+                <div class="section-heading center">
+                    <p class="section-title">About Me</p>
+                </div>
+                <p class="about-text" id="aboutText" aria-live="polite"></p>
+            </section>
+
+            <section id="skills" class="section skills-section">
+                <div class="section-heading center-heading">
+                    <p class="section-title" align="center">Skills</p>
+                </div>
+                <article class="skill-card combined-skills-card">
+              
+                    <div class="skills-container">
+                        <div class="skill-box technical-box">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-tags technical-skill-grid">
+                                <span class="skill-badge"><span class="skill-icon skill-html" aria-hidden="true"><img src="png-clipart-html-logo-html5-logo-icons-logos-emojis-tech-companies-thumbnail.png" alt="HTML5 logo"></span><span>HTML5</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-css" aria-hidden="true"><img src="CSS-Logo-PNG-Symbol-for-Web-Development-Transparent-jpg.webp" alt="CSS3 logo"></span><span>CSS3</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-js" aria-hidden="true"><img src="javascript-logo-javascript-icon-transparent-free-png.png" alt="JavaScript logo"></span><span>JavaScript</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-react" aria-hidden="true"><img src="524-5245981_react-js-logo-png-transparent-png-download.png" alt="React.js logo"></span><span>React.js</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-node" aria-hidden="true"><img src="kisspng-node-js-javascript-software-developer-npm-teleological-argument-5b355523118c51.7437450215302218590719.jpg" alt="Node.js logo"></span><span>Node.js</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-mongo" aria-hidden="true"><img src="mongodb-nedir-1.png" alt="MongoDB logo"></span><span>MongoDB</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-sql" aria-hidden="true"><img src="hd-mysql-logo-transparent-background-701751694771788209ydqoapx.png" alt="MySQL logo"></span><span>MySQL</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-python" aria-hidden="true"><img src="hd-python-logo-symbol-transparent-png-735811696257415dbkifcuokn.png" alt="Python logo"></span><span>Python</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-git" aria-hidden="true"><img src="logo-logo-git-line-cheat-sheet-signage-cheating-mug-png-clipart.jpg" alt="Git logo"></span><span>Git</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-github" aria-hidden="true"><img src="github-white-icon.png" alt="GitHub logo"></span><span>GitHub</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-api" aria-hidden="true"><img src="68624ec9dc394e09ab806d0b_rest api image.png" alt="REST API logo"></span><span>REST APIs</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-rwd" aria-hidden="true"><img src="responsive-web-development-line-icon-linear-style-sign-for-mobile-concept-and-web-design-outline-icon-symbol-logo-illustration-graphic-free-vector.jpg" alt="Responsive Web Design logo"></span><span>Responsive Web Design</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-ai" aria-hidden="true"><img src="ai-integration-icon-line-illustration-vector.jpg" alt="AI Integration logo"></span><span>AI Integration</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-prompt" aria-hidden="true"><img src="prompt-engineering-logo.png" alt="Prompt Engineering logo"></span><span>Prompt Engineering</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-figma" aria-hidden="true"><img src="figma-logo-icon-figma-app-editable-transparent-background-premium-social-media-design-for-digital-download-free-png.png" alt="Figma logo"></span><span>Figma</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-canva" aria-hidden="true"><img src="canva-logo-png-svg.webp" alt="Canva logo"></span><span>Canva</span></span>
+                                <span class="skill-badge"><span class="skill-icon skill-vscode" aria-hidden="true"><img src="png-clipart-visual-studio-code-logo-thumbnail-tech-companies-thumbnail.png" alt="VS Code logo"></span><span>VS Code</span></span>
+                            </div>
+                        </div>
+                        <div class="skill-box soft-box">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-badge">Communication</span>
+                                <span class="skill-badge">Problem Solving</span>
+                                <span class="skill-badge">Adaptability</span>
+                                <span class="skill-badge">Time Management</span>
+                                <span class="skill-badge">Creativity</span>
+                                <span class="skill-badge">Teamwork</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-description">
-                            A full-featured e-commerce platform built with React and Node.js. 
-                            Features include product catalog, shopping cart, secure checkout, and admin dashboard.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Stripe API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="project-link">View Code</a>
-                            <a href="#" target="_blank" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
+                </article>
+            </section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder placeholder-2">
-                            <span>Project 2</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Task Management App</h3>
-                        <p class="project-description">
-                            A collaborative task management application with real-time updates. 
-                            Users can create projects, assign tasks, set deadlines, and track progress.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Tailwind CSS</span>
-                            <span class="tag">WebSockets</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="project-link">View Code</a>
-                            <a href="#" target="_blank" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
+            <section id="projects" class="section projects-section">
+                <div class="section-heading">
+                    <p class="section-title">Projects</p>
+                
                 </div>
+                <div class="cards-grid projects-grid">
+                    <article class="project-card">
+                        <h3>Orbit : Personalised Event Discovery Plateform</h3>
+                        <p>Discover events tailored to your interests, location, and preferences.
+Orbit curates personalized experiences so you never miss what matters most to you.</p>
+                        <a href="https://rakshitahere.github.io/Orbit-Persoanlised-event-discovery-plateform/" class="project-link">Click Here</a>
+                    </article>
+                </div>
+            </section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder placeholder-3">
-                            <span>Project 3</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-description">
-                            An interactive weather dashboard displaying real-time weather data. 
-                            Features location search, 5-day forecast, and beautiful data visualization.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">OpenWeather API</span>
-                            <span class="tag">Chart.js</span>
-                            <span class="tag">Geolocation</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="project-link">View Code</a>
-                            <a href="#" target="_blank" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
+            <section id="contact" class="section contact-section">
+                <div class="section-heading center-heading">
+                    <p class="section-title" align="center">Contact</p>
+                    <h2 align="center">Let's connect and create</h2>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="title-underline"></div>
-                <p class="contact-subtitle">
-                    I'm always interested in hearing about new projects and opportunities. 
-                    Feel free to reach out!
-                </p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3 class="contact-label">Email</h3>
-                        <a href="mailto:rakshitabaadkar1@gmail.com" class="contact-link">rakshitabaadkar1@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <h3 class="contact-label">Phone</h3>
-                        <a href="tel:+7349046867" class="contact-link">+91 7349046867</a>
-                    </div>
-                    <div class="contact-item">
-                        <h3 class="contact-label">Location</h3>
-                        <p class="contact-text">India, Karnataka</p>
-                    </div>
-                </div>
-                <div class="contact-social">
-                    <h3 class="social-heading">Connect With Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/rakshitabaadkar" target="_blank" class="social-btn" title="GitHub">
-                            <span class="social-label">GitHub</span>
+                <div class="contact-card">
+                    <div class="contact-list">
+                        <a href="tel:+919876543210" class="contact-item">
+                            <span class="contact-badge-icon" aria-hidden="true"><img src="phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg" alt="Phone icon"></span>
+                            <div class="contact-info">
+                                <strong>Phone</strong>
+                                <span>+91 7359046867</span>
+                            </div>
                         </a>
-                        <a href="https://linkedin.com/in/rakshitabaadkar" target="_blank" class="social-btn" title="LinkedIn">
-                            <span class="social-label">LinkedIn</span>
+                        <a href="mailto:rakshitabaadkar1@gmail.com" class="contact-item">
+                            <span class="contact-badge-icon" aria-hidden="true"><img src="google_mail_gmail_logo_icon_159346.png" alt="Email icon"></span>
+                            <div class="contact-info">
+                                <strong>Email</strong>
+                                <span>rakshitabaadkar1@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/rakshitahere" target="_blank" rel="noreferrer" class="contact-item">
+                            <span class="contact-badge-icon" aria-hidden="true"><img src="github-white-icon.png" alt="GitHub icon"></span>
+                            <div class="contact-info">
+                                <strong>GitHub</strong>
+                                <span>github.com/rakshitahere</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rakshitabAADKAR/" target="_blank" rel="noreferrer" class="contact-item">
+                            <span class="contact-badge-icon" aria-hidden="true"><img src="round-linkedin-logo-isolated-white-background_469489-985.jpg" alt="LinkedIn icon"></span>
+                            <div class="contact-info">
+                                <strong>LinkedIn</strong>
+                                <span>linkedin.com/in/rakshitabAADKAR</span>
+                            </div>
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        </main>
+    </div>
+    <script>
+        const aboutSection = document.getElementById('about');
+        const aboutText = document.getElementById('aboutText');
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-text">
-                Designed & Built with <span class="heart">♥</span> by Rakshita Baadkar
-            </p>
-        </div>
-    </footer>
-</body>
+        if (aboutSection && aboutText) {
+            const fullText = "Every great application begins with an idea, and every developer begins with the willingness to learn. My journey into web development started with curiosity and has grown into a passion for creating websites and applications that are clean, responsive, and user-friendly.\n\nI'm someone who enjoys learning, exploring new technologies, and challenging myself with projects that help me grow. I believe every challenge is an opportunity to improve, and every project is a step toward becoming a better developer. I enjoy paying attention to detail, finding creative solutions to problems, and turning ideas into meaningful digital experiences.\n\nAs an aspiring Full Stack Developer, I am continuously strengthening my skills in both front-end and back-end development. I believe the best way to learn is by building, experimenting, and staying consistent. I enjoy writing clean, organized code and creating applications that are not only functional but also intuitive and visually appealing.\n\nThis portfolio represents more than just the projects I've built. It reflects my curiosity, dedication, and commitment to continuous learning. Every line of code tells a story of progress, every project marks a milestone, and every challenge has helped shape the developer I'm becoming. I'm excited about the journey ahead and look forward to building meaningful digital experiences, collaborating with others, and making a positive impact through technology.";
+
+            let index = 0;
+            let hasStarted = false;
+
+            const typeText = () => {
+                if (index < fullText.length) {
+                    aboutText.textContent = fullText.slice(0, index + 1);
+                    index += 1;
+                    window.setTimeout(typeText, 18);
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasStarted) {
+                        hasStarted = true;
+                        typeText();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(aboutSection);
+        }
+
+        const skillBadges = document.querySelectorAll('.skill-badge');
+
+        skillBadges.forEach((badge) => {
+            badge.addEventListener('pointermove', (event) => {
+                const rect = badge.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width - 0.5;
+                const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+                badge.style.transform = `translate3d(${x * 12}px, ${y * 12}px, 0) scale(1.02)`;
+            });
+
+            badge.addEventListener('pointerleave', () => {
+                badge.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            });
+        });
+    </script>
+
+    </body>
 </html>
+
