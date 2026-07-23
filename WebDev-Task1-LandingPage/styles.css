@@ -694,6 +694,8 @@ button {
 
     .nav-menu {
         gap: var(--spacing-lg);
+        justify-content: center;
+        width: 100%;
     }
 
     .hero {
@@ -735,7 +737,6 @@ button {
     }
 }
 
-
 @media (max-width: 480px) {
     :root {
         --font-size-lg: 2rem;
@@ -751,6 +752,12 @@ button {
 
     .nav-menu {
         gap: var(--spacing-lg);
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-item {
+        width: 100%;
     }
 
     .nav-logo {
@@ -765,7 +772,13 @@ button {
         font-size: 1rem;
     }
 
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     .cta-button {
+        width: 100%;
         padding: var(--spacing-md) var(--spacing-lg);
     }
 

@@ -52,6 +52,9 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    touch-action: manipulation;
 }
 
 button,
@@ -496,23 +499,46 @@ input {
 }
 
 @media (max-width: 980px) {
+    .layout-shell {
+        width: min(1180px, calc(100% - 1rem));
+    }
+
     .grid-panel {
         grid-template-columns: 1fr;
     }
 
+    .hero-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-thermometer {
+        position: static;
+        transform: none;
+        width: 3.75rem;
+        height: 10rem;
+        margin: 0 auto;
+    }
+
+    .results-grid,
     .bottom-widgets {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 640px) {
+    .layout-shell {
+        width: calc(100% - 0.75rem);
+        margin: 0.75rem auto 1.25rem;
+    }
+
     .hero-card {
         padding: 1.75rem 1.25rem;
     }
 
     .converter-card,
     .side-panel {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .select-row {
@@ -521,5 +547,16 @@ input {
 
     .swap-btn {
         width: 100%;
+        min-height: 52px;
+    }
+
+    .results-section {
+        padding: 1rem;
+    }
+
+    .quick-list li,
+    .history-list li {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
